@@ -14,7 +14,7 @@ const editAnimes = ({ token }) => {
 
     const [anime, setAnime] = useState('')
     const [title, setTitle] = useState('')
-    const [studios,setStudios] = useState('')
+    const [studios, setStudios] = useState('')
     const [eps, setEps] = useState(0)
     const [rating, setRating] = useState('')
     const [genres, setGenres] = useState('')
@@ -28,7 +28,9 @@ const editAnimes = ({ token }) => {
         if (animes && animes.length)
             return (animes.map((anime, index) =>
             (<li key={index} className={styles.listItem}>
+                ID : {(anime) ? anime.id : '-'} <br></br>
                 Title : {(anime) ? anime.title : '-'} <br></br>
+                <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
                 Studios : {(anime) ? anime.studios : '-'} <br></br>
                 Episodes : {(anime) ? anime.eps : '-'} <br></br>
                 Rating : {(anime) ? anime.rating : '-'} <br></br>
@@ -43,19 +45,19 @@ const editAnimes = ({ token }) => {
         }
     }
 
-    const addAnime = async (title,studios,eps,rating,genres) => {
-        const result = await axios.post(URL, { title,studios,eps,rating,genres })
+    const addAnime = async (title, studios, eps, rating, genres) => {
+        const result = await axios.post(URL, { title, studios, eps, rating, genres })
         console.log(result.data)
         mutate(URL)
     }
-  
+
     const deleteAnime = async (id) => {
         const result = await axios.delete(`${URL}/${id}`)
         console.log(result.data)
         mutate(URL)
     }
-     const updateAnime = async (id) => {
-        const result = await axios.put(`${URL}/${id}`,{
+    const updateAnime = async (id) => {
+        const result = await axios.put(`${URL}/${id}`, {
             title,
             studios,
             eps,
@@ -66,6 +68,23 @@ const editAnimes = ({ token }) => {
         console.log('anime id update: ', result.data)
         mutate(URL)
     }
+   
+
+    // const upload = (file) => {
+    //     console.log(file)
+
+    //     fetch('http://localhost:8080/upload', {
+    //         method: 'POST',
+    //         body: file 
+    //     }).then(
+    //         response => response.json() // if the response is a JSON object
+    //     ).then(
+    //         success => console.log(success) // Handle the success response object
+    //     ).catch(
+    //         error => console.log(error) // Handle the error response object
+    //     );
+
+    // };
 
     return (
         <Layout>
@@ -74,7 +93,7 @@ const editAnimes = ({ token }) => {
             </Head>
             <div className={styles.container}>
                 <Navbar />
-                
+
                 <ul className={styles.list}>
                     {printAnimes(data.list)}
                 </ul>
@@ -86,7 +105,8 @@ const editAnimes = ({ token }) => {
                     Rating : <input type="text" onChange={(e) => setRating(e.target.value)} className={styles.textInput} />
                     Genres : <input type="text" onChange={(e) => setGenres(e.target.value)} className={styles.textInput} />
                     Day : <input type="text" onChange={(e) => setDay(e.target.value)} className={styles.textInput} />
-                    <button onClick={() => addAnime(title,studios,eps,rating,genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                    <button onClick={() => addAnime(title, studios, eps, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                    {/* <input  type="file" name="file" onChange={(e)=>upload(e.target.value)}/> */}
                 </div>
 
             </div>
