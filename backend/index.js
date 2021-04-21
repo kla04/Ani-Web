@@ -10,32 +10,7 @@ const bcrypt = require('bcrypt')
 
 const db = require('./database.js')
 let users = db.users
-
-let animes = {
-    list:
-        [
-            {
-                id: 1,
-                title: `I Shaved. Then I Brought a High School Girl Home., Higehiro`,
-                studios: 'Project No.9',
-                eps: 13, source: 'Light novel',
-                rating: 'PG-13 ', aired: 'TV - Apr 5, 2021, 22:30 (JST)',
-                genres: ' Drama, Romance',
-                day: 'Monday'
-            },
-            {
-                id: 2,
-                title: 'To Your Eternity',
-                studios: `Brain's Base`,
-                eps: 20, source: ' Manga',
-                rating: 'None',
-                aired: 'TV - Apr 12, 2021, 22:50 (JST)',
-                genres: ' Adventure, Supernatural, Drama, Shounen',
-                day: 'Monday'
-            },
-
-        ]
-}
+let animes = db.animes
 
 require('./passport.js')
 
