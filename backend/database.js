@@ -25,7 +25,7 @@ let animes = {
                 title: 'To Your Eternity',
                 studios: `Brain's Base`,
                 eps: '20', 
-                source: ' Manga',
+                source: 'Manga',
                 rating: 'None',
                 aired: 'TV - Apr 12, 2021, 22:50 (JST)',
                 genres: ' Adventure, Supernatural, Drama, Shounen',
@@ -89,7 +89,7 @@ let animes = {
             {
                 id: 8,
                 title: 'Tokyo Revengers',
-                studios: `Unknown`,
+                studios: `LIDENFILMS`,
                 eps: 'Unknown', 
                 source: ' Manga',
                 rating: 'PG-13',

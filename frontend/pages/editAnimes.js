@@ -8,10 +8,12 @@ import aniAuth from '../components/aniAuth'
 import config from '../config/config'
 import useSWR, { mutate } from 'swr'
 
+
 const URL = `${config.URL}/animes`
 const fetcher = url => axios.get(url).then(res => res.data)
 const editAnimes = ({ token }) => {
 
+    const [idEdit, setidEdit] = useState('')
     const [anime, setAnime] = useState('')
     const [title, setTitle] = useState('')
     const [studios, setStudios] = useState('')
@@ -30,15 +32,76 @@ const editAnimes = ({ token }) => {
             return (animes.map((anime, index) =>
             (<li key={index} className={styles.listItem}>
                 ID : {(anime) ? anime.id : '-'} <br></br>
-                Title : {(anime) ? anime.title : '-'} <br></br>
+                Title : {(+idEdit !== +anime.id) ? anime.title :
+                    (<input type="text" className={styles.text}
+
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}>
+
+                    </input >)
+                } <br></br>
                 <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
-                Studios : {(anime) ? anime.studios : '-'} <br></br>
-                Episodes : {(anime) ? anime.eps : '-'} <br></br>
-                Source : {(anime) ? anime.source : '-'} <br></br>
-                Rating : {(anime) ? anime.rating : '-'} <br></br>
-                Genres : {(anime) ? anime.genres : '-'} <br></br>
-                Day : {(anime) ? anime.day : '-'}
-                <button onClick={() => updateAnime(anime.id)} className={`${styles.button} ${styles.btnEdit}`}>Update</button>
+                Studios : {(+idEdit !== +anime.id) ? anime.studios :
+                    (<input type="text" className={styles.text}
+
+                        value={studios}
+                        onChange={(e) => setStudios(e.target.value)}>
+
+                    </input >)
+                } <br></br>
+                Episodes : {(+idEdit !== +anime.id) ? anime.eps :
+                    (<input type="text" className={styles.text}
+
+                        value={eps}
+                        onChange={(e) => setEps(e.target.value)}>
+
+                    </input >)
+                } <br></br>
+                Source : {(+idEdit !== +anime.id) ? anime.source :
+                    (<input list="source" className={styles.text}
+
+                        value={source}
+                        onChange={(e) => setSource(e.target.value)}>
+
+                    </input >)
+                   
+                } <br></br>
+                Rating : {(+idEdit !== +anime.id) ? anime.rating :
+                    (<input list="rating" className={styles.text}
+
+                        value={rating}
+                        onChange={(e) => setRating(e.target.value)}>
+
+                    </input >)
+                } <br></br>
+                Genres : {(+idEdit !== +anime.id) ? anime.genres :
+                    (<input type="text" className={styles.text}
+
+                        value={genres}
+                        onChange={(e) => setGenres(e.target.value)}>
+
+                    </input >)
+                } <br></br>
+                Day :{(+idEdit !== +anime.id) ? anime.day :
+                    (<input list="day" className={styles.text}
+
+                        value={day}
+                        onChange={(e) => setDay(e.target.value)}>
+
+                    </input >)
+                }
+                <button onClick={() => editAnime(
+                    data.list,
+                    anime.id,
+                    anime.title,
+                    anime.studios,
+                    anime.eps,
+                    anime.source,
+                    anime.rating,
+                    anime.genres,
+                    anime.day)} 
+                    className={`${styles.button} ${styles.btnEdit}`}>Edit</button>
+
                 <button onClick={() => deleteAnime(anime.id)} className={`${styles.button} ${styles.btnDelete}`}> Delete </button>
             </li>)
             ))
@@ -58,7 +121,19 @@ const editAnimes = ({ token }) => {
         console.log(result.data)
         mutate(URL)
     }
-    const updateAnime = async (id) => {
+    const editAnime = async (animes, id) => {
+        setidEdit(id)
+        let text = animes.find((anime) => +anime.id === +id)
+        setTitle(text.title)
+        setStudios(text.studios)
+        setEps(text.eps)
+        setSource(text.source)
+        setRating(text.rating)
+        setGenres(text.genres)
+        setDay(text.day)
+        if (+idEdit === +id) { //Press Edit again
+            setidEdit(0)
+        }
         const result = await axios.put(`${URL}/${id}`, {
             title,
             studios,

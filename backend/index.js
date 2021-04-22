@@ -36,6 +36,7 @@ router.route('/animes')
         newAnime.title = req.body.title
         newAnime.studios = req.body.studios
         newAnime.eps = req.body.eps
+        newAnime.source = req.body.source
         newAnime.rating = req.body.rating
         newAnime.aired = req.body.aired
         newAnime.genres = req.body.genres
@@ -66,6 +67,7 @@ router.route('/animes/:anime_id') //params
             animes.list[id].title = req.body.title
             animes.list[id].studios = req.body.studios
             animes.list[id].eps = req.body.eps
+            animes.list[id].source = req.body.source
             animes.list[id].rating = req.body.rating
             animes.list[id].aired = req.body.aired
             animes.list[id].genres = req.body.genres

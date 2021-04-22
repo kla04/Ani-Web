@@ -19,20 +19,25 @@ const showAnimes = (token) => {
         console.log('Animes:', animes)
         if (animes && animes.length)
             return (animes.map((anime, index) =>
-            (<li key={index} className={styles.listItem}>
-               Title : {(anime) ? anime.title : '-'} <br></br>
-               <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
-               Studios : {(anime) ? anime.studios : '-'} <br></br>
-               Episodes : {(anime) ? anime.eps : '-'} <br></br> 
-               Source : {(anime) ? anime.source : '-'} <br></br> 
-               Rating : {(anime) ? anime.rating : '-'} <br></br> 
-               Genres : {(anime) ? anime.genres : '-'} <br></br> 
-            </li>)
+            (
+            // (anime.day==="Monday") ? 
+             <li key={index} className={styles.listItem}>
+            Title : {(anime) ? anime.title : '-'} <br></br>
+            <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
+            Studios : {(anime) ? anime.studios : '-'} <br></br>
+            Episodes : {(anime) ? anime.eps : '-'} <br></br>
+            Source : {(anime) ? anime.source : '-'} <br></br>
+            Rating : {(anime) ? anime.rating : '-'} <br></br>
+            Genres : {(anime) ? anime.genres : '-'} <br></br>
+            </li> //: ' '
+           )
             ))
+
+
         else {
             return (<h2>No animes</h2>)
         }
-      }
+    }
     return (
         <Layout>
             <Head>
@@ -43,7 +48,7 @@ const showAnimes = (token) => {
                 <ul className={styles.list}>
                     {printAnimes(data.list)}
                 </ul>
-                
+
             </div>
         </Layout>
     )
