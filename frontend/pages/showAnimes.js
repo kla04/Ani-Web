@@ -24,6 +24,7 @@ const showAnimes = (token) => {
                <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
                Studios : {(anime) ? anime.studios : '-'} <br></br>
                Episodes : {(anime) ? anime.eps : '-'} <br></br> 
+               Source : {(anime) ? anime.source : '-'} <br></br> 
                Rating : {(anime) ? anime.rating : '-'} <br></br> 
                Genres : {(anime) ? anime.genres : '-'} <br></br> 
             </li>)

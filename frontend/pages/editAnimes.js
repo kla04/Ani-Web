@@ -15,7 +15,8 @@ const editAnimes = ({ token }) => {
     const [anime, setAnime] = useState('')
     const [title, setTitle] = useState('')
     const [studios, setStudios] = useState('')
-    const [eps, setEps] = useState(0)
+    const [eps, setEps] = useState('')
+    const [source, setSource] = useState('')
     const [rating, setRating] = useState('')
     const [genres, setGenres] = useState('')
     const [day, setDay] = useState('')
@@ -33,6 +34,7 @@ const editAnimes = ({ token }) => {
                 <img src={`http://localhost:8080/files/${anime.id}.jpg`} width={200} height={250} />
                 Studios : {(anime) ? anime.studios : '-'} <br></br>
                 Episodes : {(anime) ? anime.eps : '-'} <br></br>
+                Source : {(anime) ? anime.source : '-'} <br></br>
                 Rating : {(anime) ? anime.rating : '-'} <br></br>
                 Genres : {(anime) ? anime.genres : '-'} <br></br>
                 Day : {(anime) ? anime.day : '-'}
@@ -45,8 +47,8 @@ const editAnimes = ({ token }) => {
         }
     }
 
-    const addAnime = async (title, studios, eps, rating, genres) => {
-        const result = await axios.post(URL, { title, studios, eps, rating, genres })
+    const addAnime = async (title, studios, eps, source, rating, genres) => {
+        const result = await axios.post(URL, { title, studios, eps, source, rating, genres })
         console.log(result.data)
         mutate(URL)
     }
@@ -61,6 +63,7 @@ const editAnimes = ({ token }) => {
             title,
             studios,
             eps,
+            source,
             rating,
             genres,
             day
@@ -68,7 +71,7 @@ const editAnimes = ({ token }) => {
         console.log('anime id update: ', result.data)
         mutate(URL)
     }
-   
+
 
     // const upload = (file) => {
     //     console.log(file)
@@ -101,14 +104,43 @@ const editAnimes = ({ token }) => {
                 <div className={styles.list}>
                     Title : <input type="text" onChange={(e) => setTitle(e.target.value)} className={styles.textInput} />
                     Studios : <input type="text" onChange={(e) => setStudios(e.target.value)} className={styles.textInput} />
-                    Episodes : <input type="number" onChange={(e) => setEps(e.target.value)} className={styles.textInput} />
-                    Rating : <input type="text" onChange={(e) => setRating(e.target.value)} className={styles.textInput} />
+                    Episodes : <input type="text" onChange={(e) => setEps(e.target.value)} className={styles.textInput} />
+                </div>
+                <div className={styles.list}>
+                    Source : <input list="source" onChange={(e) => setSource(e.target.value)} className={styles.textInput} />
+                    <datalist id="source">
+                        <option value="Manga" />
+                        <option value="Light novel" />
+                        <option value="Original" />
+                        <option value="Web manga" />
+                        <option value="Game" />
+                        <option value="Novel" />
+                        <option value="Other" />
+                    </datalist>
+                    Rating : <input list="rating" onChange={(e) => setRating(e.target.value)} className={styles.textInput} />
+                    <datalist id="rating">
+                        <option value="None" />
+                        <option value="PG" />
+                        <option value="PG-13" />
+                        <option value="R - 17+" />
+                        <option value=" R+" />
+                    </datalist>
                     Genres : <input type="text" onChange={(e) => setGenres(e.target.value)} className={styles.textInput} />
-                    Day : <input type="text" onChange={(e) => setDay(e.target.value)} className={styles.textInput} />
-                    <button onClick={() => addAnime(title, studios, eps, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
-                    {/* <input  type="file" name="file" onChange={(e)=>upload(e.target.value)}/> */}
+                    Day : <input list="day" onChange={(e) => setDay(e.target.value)} className={styles.textInput} />
+                    <datalist id="day">
+                        <option value="Monday" />
+                        <option value="Tuesday" />
+                        <option value="Wednesday" />
+                        <option value="Thursday" />
+                        <option value="Friday" />
+                        <option value="Saturday" />
+                        <option value="Sunday" />
+                    </datalist>
                 </div>
 
+
+                <button onClick={() => addAnime(title, studios, eps, source, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                {/* <input  type="file" name="file" onChange={(e)=>upload(e.target.value)}/> */}
             </div>
         </Layout>
     )
