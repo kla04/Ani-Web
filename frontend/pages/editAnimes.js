@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import Navbar from '../components/navbar'
-import { useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import styles from '../styles/ani.module.css'
 import axios from 'axios'
 import aniAuth from '../components/aniAuth'
@@ -9,7 +9,7 @@ import config from '../config/config'
 import useSWR, { mutate } from 'swr'
 import React, { Component } from 'react'
 
-
+const urlFile = 'http://localhost:8080/files'
 const URL = `${config.URL}/animes`
 const fetcher = url => axios.get(url).then(res => res.data)
 const editAnimes = ({ token }) => {
@@ -111,9 +111,22 @@ const editAnimes = ({ token }) => {
         }
     }
 
-    const addAnime = async (title, studios, eps, source, rating, genres) => {
-        const result = await axios.post(URL, { title, studios, eps, source, rating, genres })
-        console.log(result.data)
+    const addAnime = async (title, studios, eps, source, rating, genres,day) => {
+        if (title.trim() === '' ||
+            studios.trim() === '' ||
+            eps.trim() === '' ||
+            source.trim() === '' ||
+            rating.trim() === '' ||
+            genres.trim() === '' ||
+            day.trim() === '')
+        {
+            alert('Please enter complete information !!')
+        }
+        else {
+            const result = await axios.post(URL, { title, studios, eps, source, rating, genres, day })
+            console.log(result.data)
+        }
+
         mutate(URL)
     }
 
@@ -142,6 +155,14 @@ const editAnimes = ({ token }) => {
                 genres,
                 day
             })
+            //reset value
+            setTitle('')
+            setStudios('')
+            setEps('')
+            setSource('')
+            setRating('')
+            setGenres('')
+            setDay('')
             console.log('anime id update: ', result.data)
             setidEdit(0)
         }
@@ -156,26 +177,10 @@ const editAnimes = ({ token }) => {
         formData.append('file', file)
 
         let xhr = new XMLHttpRequest()
-        const url1 = 'http://localhost:8080/upload'
-        xhr.open('post', url1, true)
+        const urlImag = 'http://localhost:8080/upload'
+        xhr.open('post', urlImag, true)
         xhr.send(formData)
     }
-
-    // const upload = (file) => {
-    //     console.log(file)
-
-    //     fetch('http://localhost:8080/upload', {
-    //         method: 'POST',
-    //         body: file 
-    //     }).then(
-    //         response => response.json() // if the response is a JSON object
-    //     ).then(
-    //         success => console.log(success) // Handle the success response object
-    //     ).catch(
-    //         error => console.log(error) // Handle the error response object
-    //     );
-
-    // };
 
     return (
         <Layout>
@@ -227,7 +232,7 @@ const editAnimes = ({ token }) => {
                 </div>
 
                 <div>
-                    <button onClick={() => addAnime(title, studios, eps, source, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                    <button onClick={() => addAnime(title, studios, eps, source, rating, genres, day)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
                     <input type='file' name='file' onChange={handleFileUpload} />
                 </div>
 

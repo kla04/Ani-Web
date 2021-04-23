@@ -5,8 +5,9 @@ import Navbar from '../components/navbar'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import config from '../config/config'
+import aniAuth from '../components/aniAuth'
 
-export default function Login({ token }) {
+const  Login  = ({ token })=> {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -89,7 +90,7 @@ export default function Login({ token }) {
         </Layout>
     )
 }
-
+export default aniAuth(Login)
 export function getServerSideProps({ req, res }) {
     return { props: { token: req.cookies.token || "" } };
 }

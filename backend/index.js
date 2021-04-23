@@ -38,7 +38,6 @@ router.route('/animes')
         newAnime.eps = req.body.eps
         newAnime.source = req.body.source
         newAnime.rating = req.body.rating
-        newAnime.aired = req.body.aired
         newAnime.genres = req.body.genres
         newAnime.day = req.body.day
         animes = { list: [...animes.list, newAnime] }

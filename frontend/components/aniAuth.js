@@ -7,7 +7,7 @@ const aniAuth= WrappedComponent => {
         const router = useRouter()
         useEffect(() => {
             if (!token)
-                router.push('/showAnimes')
+                router.push('/login')
             if (token)
                 router.push('/editAnimes')
         }, [token])

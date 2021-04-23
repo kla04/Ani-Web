@@ -16,7 +16,6 @@ let animes = {
                 eps: '13', 
                 source: 'Light novel',
                 rating: 'PG-13 ', 
-                aired: 'TV - Apr 5, 2021, 22:30 (JST)',
                 genres: ' Drama, Romance',
                 day: 'Monday'
             },
@@ -27,7 +26,6 @@ let animes = {
                 eps: '20', 
                 source: 'Manga',
                 rating: 'None',
-                aired: 'TV - Apr 12, 2021, 22:50 (JST)',
                 genres: ' Adventure, Supernatural, Drama, Shounen',
                 day: 'Monday'
             },
@@ -38,7 +36,6 @@ let animes = {
                 eps:  'Unknown',
                 source: ' Manga',
                 rating: 'PG-13',
-                aired: 'TV - Apr 6, 2021, 01:30 (JST)',
                 genres: 'Slice of Life, Comedy, Supernatural, Drama, Romance, Shoujo',
                 day: 'Tuesday'
             },
@@ -49,7 +46,6 @@ let animes = {
                 eps: '12',
                 source: 'Light novel',
                 rating: 'PG-13',
-                aired: 'TV - Apr 14, 2021, 21:00 (JST)',
                 genres: ' Harem, Comedy, Romance, School',
                 day: 'Wednesday'
             },
@@ -60,7 +56,6 @@ let animes = {
                 eps: '12', 
                 source: 'Original',
                 rating: ' R - 17+',
-                aired: 'TV - Apr 8, 2021, 23:30 (JST)',
                 genres: ' Music, Comedy, Supernatural',
                 day: 'Thursday'
             },
@@ -71,7 +66,6 @@ let animes = {
                 eps: '10', 
                 source: '  Light novel',
                 rating: 'PG-13',
-                aired: 'TV - Apr 9, 2021, 01:28 (JST)',
                 genres: '  Harem, Comedy, Magic, Ecchi, Fantasy',
                 day: 'Friday'
             },
@@ -82,7 +76,6 @@ let animes = {
                 eps: '25', 
                 source: ' Manga',
                 rating: 'PG-13 ',
-                aired: 'TV - Mar 27, 2021, 17:30 (JST)',
                 genres: ' Action, Comedy, Super Power, School, Shounen',
                 day: 'Saturday'
             },
@@ -93,7 +86,6 @@ let animes = {
                 eps: 'Unknown', 
                 source: ' Manga',
                 rating: 'PG-13',
-                aired: 'TV - Apr 11, 2021, 02:08 (JST)',
                 genres: '  Action, Supernatural, Drama, School, Shounen',
                 day: 'Sunday'
             },
