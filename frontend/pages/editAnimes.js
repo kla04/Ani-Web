@@ -7,6 +7,7 @@ import axios from 'axios'
 import aniAuth from '../components/aniAuth'
 import config from '../config/config'
 import useSWR, { mutate } from 'swr'
+import React, { Component } from 'react'
 
 
 const URL = `${config.URL}/animes`
@@ -64,7 +65,7 @@ const editAnimes = ({ token }) => {
                         onChange={(e) => setSource(e.target.value)}>
 
                     </input >)
-                   
+
                 } <br></br>
                 Rating : {(+idEdit !== +anime.id) ? anime.rating :
                     (<input list="rating" className={styles.text}
@@ -99,7 +100,7 @@ const editAnimes = ({ token }) => {
                     anime.source,
                     anime.rating,
                     anime.genres,
-                    anime.day)} 
+                    anime.day)}
                     className={`${styles.button} ${styles.btnEdit}`}>Edit</button>
 
                 <button onClick={() => deleteAnime(anime.id)} className={`${styles.button} ${styles.btnDelete}`}> Delete </button>
@@ -144,11 +145,21 @@ const editAnimes = ({ token }) => {
             console.log('anime id update: ', result.data)
             setidEdit(0)
         }
-        
-        
+
+
         mutate(URL)
     }
 
+    const handleFileUpload = (e) => {
+        var formData = new FormData()
+        const file = e.target.files[0]
+        formData.append('file', file)
+
+        let xhr = new XMLHttpRequest()
+        const url1 = 'http://localhost:8080/upload'
+        xhr.open('post', url1, true)
+        xhr.send(formData)
+    }
 
     // const upload = (file) => {
     //     console.log(file)
@@ -215,9 +226,11 @@ const editAnimes = ({ token }) => {
                     </datalist>
                 </div>
 
+                <div>
+                    <button onClick={() => addAnime(title, studios, eps, source, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                    <input type='file' name='file' onChange={handleFileUpload} />
+                </div>
 
-                <button onClick={() => addAnime(title, studios, eps, source, rating, genres)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
-                {/* <input  type="file" name="file" onChange={(e)=>upload(e.target.value)}/> */}
             </div>
         </Layout>
     )
