@@ -132,18 +132,20 @@ const editAnimes = ({ token }) => {
         setGenres(text.genres)
         setDay(text.day)
         if (+idEdit === +id) { //Press Edit again
+            const result = await axios.put(`${URL}/${id}`, {
+                title,
+                studios,
+                eps,
+                source,
+                rating,
+                genres,
+                day
+            })
+            console.log('anime id update: ', result.data)
             setidEdit(0)
         }
-        const result = await axios.put(`${URL}/${id}`, {
-            title,
-            studios,
-            eps,
-            source,
-            rating,
-            genres,
-            day
-        })
-        console.log('anime id update: ', result.data)
+        
+        
         mutate(URL)
     }
 
