@@ -41,7 +41,10 @@
     margin: 32px;
     padding: 32px;
     border: 4px solid rgb(0, 124, 240);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    width: 40%;
+    
+    
  }
   
  .buttonContainer {
