@@ -54,14 +54,14 @@ const showAnimes = (token) => {
             <div className={styles.container}>
                 <Navbar />
                 <div>
-                    <button onClick={() => setDay('ALL')} className={`${styles.button} ${styles.btnAdd}`}>ALL</button>
-                    <button onClick={() => setDay('Monday')} className={`${styles.button} ${styles.btnAdd}`}>Monday</button>
-                    <button onClick={() => setDay('Tuesday')} className={`${styles.button} ${styles.btnAdd}`}>Tuesday</button>
-                    <button onClick={() => setDay('Wednesday')} className={`${styles.button} ${styles.btnAdd}`}>Wednesday</button>
-                    <button onClick={() => setDay('Thursday')} className={`${styles.button} ${styles.btnAdd}`}>Thursday</button>
-                    <button onClick={() => setDay('Friday')} className={`${styles.button} ${styles.btnAdd}`}>Friday</button>
-                    <button onClick={() => setDay('Saturday')} className={`${styles.button} ${styles.btnAdd}`}>Saturday</button>
-                    <button onClick={() => setDay('Sunday')} className={`${styles.button} ${styles.btnAdd}`}>Sunday</button>
+                    <button onClick={() => setDay('ALL')} className={`${styles.button} ${styles.btnYello}`}>ALL</button>
+                    <button onClick={() => setDay('Monday')} className={`${styles.button} ${styles.btnYello}`}>Monday</button>
+                    <button onClick={() => setDay('Tuesday')} className={`${styles.button} ${styles.btnYello}`}>Tuesday</button>
+                    <button onClick={() => setDay('Wednesday')} className={`${styles.button} ${styles.btnYello}`}>Wednesday</button>
+                    <button onClick={() => setDay('Thursday')} className={`${styles.button} ${styles.btnYello}`}>Thursday</button>
+                    <button onClick={() => setDay('Friday')} className={`${styles.button} ${styles.btnYello}`}>Friday</button>
+                    <button onClick={() => setDay('Saturday')} className={`${styles.button} ${styles.btnYello}`}>Saturday</button>
+                    <button onClick={() => setDay('Sunday')} className={`${styles.button} ${styles.btnYello}`}>Sunday</button>
                 </div>
 
                 <ul className={styles.list}>

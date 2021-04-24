@@ -68,16 +68,16 @@
     border-radius: 10px;
  }
   
- .btnEdit {
+ .btnGreen {
     background-color: #4CAF50;
     ;
  }
   
- .btnDelete {
+ .btnRed {
     background-color: #f44336;
  }
   
- .btnAdd {
+ .btnYello {
     background-color: rgb(255, 183, 27);
  }
   

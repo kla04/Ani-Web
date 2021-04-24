@@ -101,9 +101,9 @@ const editAnimes = ({ token }) => {
                     anime.rating,
                     anime.genres,
                     anime.day)}
-                    className={`${styles.button} ${styles.btnEdit}`}>Edit</button>
+                    className={`${styles.button} ${styles.btnGreen}`}>Edit</button>
 
-                <button onClick={() => deleteAnime(anime.id)} className={`${styles.button} ${styles.btnDelete}`}> Delete </button>
+                <button onClick={() => deleteAnime(anime.id)} className={`${styles.button} ${styles.btnRed}`}> Delete </button>
             </li>)
             ))
         else {
@@ -232,7 +232,7 @@ const editAnimes = ({ token }) => {
                 </div>
 
                 <div>
-                    <button onClick={() => addAnime(title, studios, eps, source, rating, genres, day)} className={`${styles.button} ${styles.btnAdd}`}>Add new anime</button>
+                    <button onClick={() => addAnime(title, studios, eps, source, rating, genres, day)} className={`${styles.button} ${styles.btnYello}`}>Add new anime</button>
                     <input type='file' name='file' onChange={handleFileUpload} />
                 </div>
 
